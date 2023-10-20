@@ -30,6 +30,7 @@ $query = new aces\query();
 Select has two arguments.
 - table_name [required]
 - alias [optional] **Recommended when using joins**
+
 Here's a basic select query that would get all users from the users table.
 ```php
 $query -> select("users")
