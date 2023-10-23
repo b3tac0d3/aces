@@ -42,7 +42,10 @@ Only one argument is set in the update function. Update values and where values 
 - $table_name
 ```php
 // Update column with id = 1 to value jimmy
-$query -> set_update_column("username", "jimmy") -> set_where("id", 1) -> update("users");
+$query 
+    -> set_update_column("username", "jimmy") 
+    -> set_where("id", 1) 
+    -> update("users");
 ```
 The return value is always an array. On error, the error handler will be thrown. On successful query, the return will be status => 1.
 
@@ -51,7 +54,9 @@ Only one argument is set in the insert function. Insert values are set in their 
 - $table_name
 ```php
 // Insert record in to users with a username column value of jimmy
-$query -> set_insert_column("username", "jimmy") -> insert("users");
+$query 
+    -> set_insert_column("username", "jimmy") 
+    -> insert("users");
 ```
 The return array will have 2 keys. status => 1, last_insert_id.
 
@@ -60,7 +65,9 @@ Only one argument is set in the delete function. Delete values and where values 
 - $table_name
 ```php
 // Delete record from users where id col = 1
-$query -> set_where("id", 1) -> delete("users");
+$query 
+    -> set_where("id", 1) 
+    -> delete("users");
 ```
 The return array will be status => 1 on success.
 
@@ -80,7 +87,9 @@ This is how the where function looks in the query class. The arguments are as fo
 The use of the where function is as follows:
 ```php
 // Set where statement with id = 1 then run select query
-$query -> set_where("username", "b3tac0d3") -> select("users");
+$query 
+    -> set_where("username", "b3tac0d3") 
+    -> select("users");
 ```
 **or**
 ```php
@@ -110,7 +119,10 @@ The join statement has 4 arguments. The join statement accepts arrays so you can
 - $type [required] {default = "INNER"}
 ```php
 // Get users with corresponding contact information
-$query -> set_join("contacts", "c", ["c.id" => "u.id", "u.active" => 1]) -> set_where("u.id", 1) -> select("users", "u");
+$query 
+    -> set_join("contacts", "c", ["c.id" => "u.id", "u.active" => 1]) 
+    -> set_where("u.id", 1) 
+    -> select("users", "u");
 ```
 
 ## Query Limit
@@ -162,7 +174,7 @@ Set multiple select statements with one method. Runs a set_select_column for eac
 - $columns [required] **simple array**
 ```php
 // Select id, username and active status
-$query -> set_select_array(["id", "username", "active"])
+$query -> set_select_array(["id", "username", "active"]);
 ```
 
 ## Set Update Column 
@@ -171,7 +183,10 @@ Set column and value for update query. Is chainable.
 - $value [required]
 ```php
 // Update username in user table
-$query -> set_update_column("username", "jimmy") -> set_where("id", 1) -> update("users");
+$query 
+    -> set_update_column("username", "jimmy") 
+    -> set_where("id", 1) 
+    -> update("users");
 ```
 
 ## Set Multiple Update Columns
@@ -180,7 +195,10 @@ Set multiple update columns in one method call.
 - $values [required] **Simple array corresponding to columns array**
 ```php
 // Update contacts table first name and last name
-$query -> set_update_array(["firstname", "lastname"], ["Jimmy", "McGovern"]) -> set_where("id", 1) -> update("contacts");
+$query 
+    -> set_update_array(["firstname", "lastname"], ["Jimmy", "McGovern"]) 
+    -> set_where("id", 1) 
+    -> update("contacts");
 ```
 
 ## Set Insert Column
@@ -202,7 +220,8 @@ Set multiple insert statements in one method call.
 - $values [required]
 ```php
 // Add the same values to the insert table
-$query -> set_insert_array(["username", "password", "salt"], ["admin", "hash", 1234]);
+$query 
+    -> set_insert_array(["username", "password", "salt"], ["admin", "hash", 1234]);
 ```
 
 ## Set Table Alias
@@ -210,7 +229,9 @@ Alias is assigned to the main table being called in the query. Sub-table aliases
 - $alias [required] **Table alias**
 ```php
 // Users table would have alias of "u" for for rest of object use.
-$query -> set_alias("u") -> select("users");
+$query 
+    -> set_alias("u") 
+    -> select("users");
 ```
 
 ## Get Last Record Insert ID
